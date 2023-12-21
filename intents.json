@@ -1,0 +1,58 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day"
+      ],
+      "responses": [
+        "Hey :-)",
+        "Hello, thanks for visiting",
+        "Hi there, what can I do for you?",
+        "Hi there, how can I help?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye"],
+      "responses": [
+        "See you later, thanks for visiting",
+        "Have a nice day",
+        "Bye! Come back again soon."
+      ]
+    },
+    {
+      "tag": "weather",
+      "patterns": [
+        "What is weather outside?",
+        "Is it raining today?",
+        "Hey, is it cold outside?",
+        "Should i bring my umbrella with me?"
+      ],
+      "responses": "Weather outside is "
+    },
+    {
+      "tag": "time",
+      "patterns": [
+        "What time is it?",
+        "Is it late?",
+        "Can you tell me, what's the time"
+      ],
+      "responses": "Time is "
+    },
+    {
+      "tag": "schedule",
+      "patterns": [
+        "Can you tell me my schedule?",
+        "What I have today?",
+        "Do i have busy day?"
+      ],
+      "responses": "You schedule is "
+    }
+  ]
+}
