@@ -9,7 +9,7 @@ from utils import bag_of_words, tokenize, get_calendar_events
 
 import requests
 
-with open("secrets/api_key.json", "r") as keys:
+with open("/Users/mkhlrmnv/Documents/secrets/api_key.json", "r") as keys:
     key_data = json.load(keys)
     weather_key = key_data.get('api_key', {}).get('weather', None)
 
@@ -66,11 +66,13 @@ while True:
                     case "weather":
                         response = requests.get(base_url)
                         data = response.json()
-                        print(f"{bot_name}: Out side is {data['main']['temp']} degrees ")
+                        print(
+                            f"{bot_name}: Out side is {data['main']['temp']} degrees ")
                     case "schedule":
                         print(f"{bot_name}: You have today")
                         get_calendar_events()
                     case _:
-                        print(f"{bot_name}: {random.choice(intent['responses'])}")
+                        print(
+                            f"{bot_name}: {random.choice(intent['responses'])}")
     else:
         print(f"{bot_name}: I do not understand...")
