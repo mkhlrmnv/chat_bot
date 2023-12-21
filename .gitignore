@@ -156,6 +156,8 @@ cmake-build-*/
 
 *.pth
 
+#folder with all api related stuff
+secrets/
 
 # IntelliJ
 out/
@@ -165,6 +167,7 @@ out/
 
 # JIRA plugin
 atlassian-ide-plugin.xml
+
 
 # Cursive Clojure plugin
 .idea/replstate.xml
@@ -186,3 +189,4 @@ fabric.properties
 
 # idea folder, uncomment if you don't need it
 .idea
+/secrets/
