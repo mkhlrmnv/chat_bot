@@ -4,6 +4,7 @@ import numpy as np
 # nltk.download('punkt')
 stemmer = PorterStemmer()
 
+ignore_chars = ['?', '!', ',', '.', '"', "'"]
 
 def tokenize(sentence):
     return nltk.word_tokenize(sentence)
@@ -31,3 +32,9 @@ def bag_of_words(sentence, words):
     return bag
 
 
+def ignore_symbols(list):
+    result = []
+    for w in list:
+        if w not in ignore_chars:
+            result.append(w)
+    return result
