@@ -154,6 +154,9 @@ cmake-build-*/
 # File-based project format
 *.iws
 
+*.pth
+
+
 # IntelliJ
 out/
 
