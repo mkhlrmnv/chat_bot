@@ -5,20 +5,17 @@ from datetime import datetime
 import torch
 
 from model import NeuralNet
-from utils import bag_of_words, tokenize
+from utils import bag_of_words, tokenize, get_calendar_events
 
 import requests
 
-api_key = '5644d22f8412fa3d962a30d9a3cb6b3d'
+with open("secrets/api_key.json", "r") as keys:
+    key_data = json.load(keys)
+    weather_key = key_data.get('api_key', {}).get('weather', None)
+
 home_lat = '60.155926'
 home_long = '24.910053'
-base_url = f'https://api.openweathermap.org/data/2.5/weather?lat={home_lat}&lon={home_long}&appid={api_key}'
-
-# TODO Move to switch case
-response = requests.get(base_url)
-data = response.json()
-
-print(data)
+base_url = f'https://api.openweathermap.org/data/2.5/weather?lat={home_lat}&lon={home_long}&appid={weather_key}&units=metric'
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -67,10 +64,12 @@ while True:
                         print(f"{bot_name}: Time is: {random.choice(intent['responses'])}"
                               f"{datetime.now().strftime('%H:%M:%S')}")
                     case "weather":
-                        pass
-                        # print(f"{bot_name}: {random.choice(intent['responses'])}{getweather()}")
+                        response = requests.get(base_url)
+                        data = response.json()
+                        print(f"{bot_name}: Out side is {data['main']['temp']} degrees ")
                     case "schedule":
-                        print(f"{bot_name}: {random.choice(intent['responses'])}")
+                        print(f"{bot_name}: You have today")
+                        get_calendar_events()
                     case _:
                         print(f"{bot_name}: {random.choice(intent['responses'])}")
     else:
